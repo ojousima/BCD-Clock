@@ -1,0 +1,1128 @@
+
+BCD_Clock.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  00000500  00000594  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000500  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000b  0080010a  0080010a  0000059e  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  000005a0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00000c6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00000d03  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000098  00000000  00000000  00000d32  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   000006ca  00000000  00000000  00000dca  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000357  00000000  00000000  00001494  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000425  00000000  00000000  000017eb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000140  00000000  00000000  00001c10  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    0000020e  00000000  00000000  00001d50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000004d5  00000000  00000000  00001f5e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000090  00000000  00000000  00002433  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 e9 01 	jmp	0x3d2	; 0x3d2 <__vector_1>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 e0       	ldi	r30, 0x00	; 0
+  7c:	f5 e0       	ldi	r31, 0x05	; 5
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	aa e0       	ldi	r26, 0x0A	; 10
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a5 31       	cpi	r26, 0x15	; 21
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 8f 01 	call	0x31e	; 0x31e <main>
+  9e:	0c 94 7e 02 	jmp	0x4fc	; 0x4fc <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <key_task>:
+}
+
+void key_task (uint8_t key)
+{
+	//index to write time in
+	uint8_t index = ((mode-1) >> 1) + 1;
+  a6:	20 91 0b 01 	lds	r18, 0x010B
+  aa:	30 91 0c 01 	lds	r19, 0x010C
+  ae:	a9 01       	movw	r20, r18
+  b0:	41 50       	subi	r20, 0x01	; 1
+  b2:	51 09       	sbc	r21, r1
+  b4:	55 95       	asr	r21
+  b6:	47 95       	ror	r20
+  b8:	4f 5f       	subi	r20, 0xFF	; 255
+	//Store last value of time index to allow blinking field to be set.
+	static uint8_t stored_value = 1;
+	
+	//Set bits not to be changed high
+	uint8_t keep_mask = 0x0F;			
+	if(mode%2)
+  ba:	20 fd       	sbrc	r18, 0
+  bc:	02 c0       	rjmp	.+4      	; 0xc2 <key_task+0x1c>
+		
+	//Store last value of time index to allow blinking field to be set.
+	static uint8_t stored_value = 1;
+	
+	//Set bits not to be changed high
+	uint8_t keep_mask = 0x0F;			
+  be:	9f e0       	ldi	r25, 0x0F	; 15
+  c0:	01 c0       	rjmp	.+2      	; 0xc4 <key_task+0x1e>
+	if(mode%2)
+		keep_mask = 0xF0;
+  c2:	90 ef       	ldi	r25, 0xF0	; 240
+	
+	//Blink area to be modified - TODO: separate from key task
+	if(mode)
+  c4:	21 15       	cp	r18, r1
+  c6:	31 05       	cpc	r19, r1
+  c8:	c9 f0       	breq	.+50     	; 0xfc <key_task+0x56>
+	{
+		int counter = loopcounter & 0xFF; // approx 1.5 Hz
+  ca:	60 91 11 01 	lds	r22, 0x0111
+  ce:	70 91 12 01 	lds	r23, 0x0112
+  d2:	77 27       	eor	r23, r23
+		if(counter < 0x8F)
+  d4:	6f 38       	cpi	r22, 0x8F	; 143
+  d6:	71 05       	cpc	r23, r1
+  d8:	44 f4       	brge	.+16     	; 0xea <key_task+0x44>
+		{
+			
+			time[index] &= keep_mask;
+  da:	e4 2f       	mov	r30, r20
+  dc:	f0 e0       	ldi	r31, 0x00	; 0
+  de:	e3 5f       	subi	r30, 0xF3	; 243
+  e0:	fe 4f       	sbci	r31, 0xFE	; 254
+  e2:	50 81       	ld	r21, Z
+  e4:	59 23       	and	r21, r25
+  e6:	50 83       	st	Z, r21
+  e8:	09 c0       	rjmp	.+18     	; 0xfc <key_task+0x56>
+			
+		}
+		else
+		{
+			time[index] |= stored_value;
+  ea:	e4 2f       	mov	r30, r20
+  ec:	f0 e0       	ldi	r31, 0x00	; 0
+  ee:	e3 5f       	subi	r30, 0xF3	; 243
+  f0:	fe 4f       	sbci	r31, 0xFE	; 254
+  f2:	60 81       	ld	r22, Z
+  f4:	50 91 00 01 	lds	r21, 0x0100
+  f8:	56 2b       	or	r21, r22
+  fa:	50 83       	st	Z, r21
+		}
+	}
+		
+		
+	//Return if key was not pressed
+	if(!key)
+  fc:	88 23       	and	r24, r24
+  fe:	09 f4       	brne	.+2      	; 0x102 <key_task+0x5c>
+ 100:	5d c0       	rjmp	.+186    	; 0x1bc <key_task+0x116>
+		return;
+		
+	if(key == (1 << BUTTON_1))
+ 102:	88 30       	cpi	r24, 0x08	; 8
+ 104:	69 f5       	brne	.+90     	; 0x160 <key_task+0xba>
+	{		
+		
+		if(mode)
+ 106:	21 15       	cp	r18, r1
+ 108:	31 05       	cpc	r19, r1
+ 10a:	09 f4       	brne	.+2      	; 0x10e <key_task+0x68>
+ 10c:	4e c0       	rjmp	.+156    	; 0x1aa <key_task+0x104>
+		{
+			//Write stored value to time before going to next mode
+			time[index] &= keep_mask;
+ 10e:	e4 2f       	mov	r30, r20
+ 110:	f0 e0       	ldi	r31, 0x00	; 0
+			time[index] |= stored_value;
+ 112:	e3 5f       	subi	r30, 0xF3	; 243
+ 114:	fe 4f       	sbci	r31, 0xFE	; 254
+	{		
+		
+		if(mode)
+		{
+			//Write stored value to time before going to next mode
+			time[index] &= keep_mask;
+ 116:	80 81       	ld	r24, Z
+ 118:	98 23       	and	r25, r24
+			time[index] |= stored_value;
+ 11a:	80 91 00 01 	lds	r24, 0x0100
+ 11e:	98 2b       	or	r25, r24
+ 120:	90 83       	st	Z, r25
+		}
+		
+		//Increment mode if key 1 was pressed
+		mode++;
+ 122:	2f 5f       	subi	r18, 0xFF	; 255
+ 124:	3f 4f       	sbci	r19, 0xFF	; 255
+ 126:	30 93 0c 01 	sts	0x010C, r19
+ 12a:	20 93 0b 01 	sts	0x010B, r18
+
+		
+		if(mode%2)
+ 12e:	20 ff       	sbrs	r18, 0
+ 130:	04 c0       	rjmp	.+8      	; 0x13a <key_task+0x94>
+			stored_value = 0x01; //set 1 at default show new value
+ 132:	81 e0       	ldi	r24, 0x01	; 1
+ 134:	80 93 00 01 	sts	0x0100, r24
+ 138:	03 c0       	rjmp	.+6      	; 0x140 <key_task+0x9a>
+		else 
+			stored_value = 0x10;
+ 13a:	80 e1       	ldi	r24, 0x10	; 16
+ 13c:	80 93 00 01 	sts	0x0100, r24
+		
+		//back to usual operation if all options are set
+		if(mode > 6)
+ 140:	27 30       	cpi	r18, 0x07	; 7
+ 142:	31 05       	cpc	r19, r1
+ 144:	dc f1       	brlt	.+118    	; 0x1bc <key_task+0x116>
+		{
+		mode = 0;
+ 146:	10 92 0c 01 	sts	0x010C, r1
+ 14a:	10 92 0b 01 	sts	0x010B, r1
+		//Write data to DS1307
+		time[0] = 0x00;
+ 14e:	10 92 0d 01 	sts	0x010D, r1
+		TWIWrite(0x68, time, 0x04);
+ 152:	44 e0       	ldi	r20, 0x04	; 4
+ 154:	6d e0       	ldi	r22, 0x0D	; 13
+ 156:	71 e0       	ldi	r23, 0x01	; 1
+ 158:	88 e6       	ldi	r24, 0x68	; 104
+ 15a:	0e 94 56 02 	call	0x4ac	; 0x4ac <TWIWrite>
+ 15e:	08 95       	ret
+		}
+	}
+	
+	//Increment time if key 2 was pressed
+	if(key == (1 << BUTTON_2))
+ 160:	80 31       	cpi	r24, 0x10	; 16
+ 162:	61 f5       	brne	.+88     	; 0x1bc <key_task+0x116>
+	{
+		uint8_t increment = 0x10;
+		
+		if(mode%2)
+ 164:	80 91 0b 01 	lds	r24, 0x010B
+ 168:	90 91 0c 01 	lds	r25, 0x010C
+ 16c:	80 fd       	sbrc	r24, 0
+ 16e:	02 c0       	rjmp	.+4      	; 0x174 <key_task+0xce>
+	}
+	
+	//Increment time if key 2 was pressed
+	if(key == (1 << BUTTON_2))
+	{
+		uint8_t increment = 0x10;
+ 170:	20 e1       	ldi	r18, 0x10	; 16
+ 172:	01 c0       	rjmp	.+2      	; 0x176 <key_task+0xd0>
+		
+		if(mode%2)
+			increment = 0x01;
+ 174:	21 e0       	ldi	r18, 0x01	; 1
+			
+		//Highest value field can get
+		uint8_t max_value = 9; // 9 by default
+		
+		//5 at tens of seconds and minutes
+		if(mode == 2 || mode == 4)
+ 176:	82 30       	cpi	r24, 0x02	; 2
+ 178:	91 05       	cpc	r25, r1
+ 17a:	39 f0       	breq	.+14     	; 0x18a <key_task+0xe4>
+ 17c:	84 30       	cpi	r24, 0x04	; 4
+ 17e:	91 05       	cpc	r25, r1
+ 180:	31 f0       	breq	.+12     	; 0x18e <key_task+0xe8>
+			max_value = 0x50;
+			
+		//2 at tens of hours
+		if(mode == 6)
+ 182:	06 97       	sbiw	r24, 0x06	; 6
+ 184:	31 f0       	breq	.+12     	; 0x192 <key_task+0xec>
+		
+		if(mode%2)
+			increment = 0x01;
+			
+		//Highest value field can get
+		uint8_t max_value = 9; // 9 by default
+ 186:	99 e0       	ldi	r25, 0x09	; 9
+ 188:	05 c0       	rjmp	.+10     	; 0x194 <key_task+0xee>
+		
+		//5 at tens of seconds and minutes
+		if(mode == 2 || mode == 4)
+ 18a:	90 e5       	ldi	r25, 0x50	; 80
+ 18c:	03 c0       	rjmp	.+6      	; 0x194 <key_task+0xee>
+ 18e:	90 e5       	ldi	r25, 0x50	; 80
+ 190:	01 c0       	rjmp	.+2      	; 0x194 <key_task+0xee>
+			max_value = 0x50;
+			
+		//2 at tens of hours
+		if(mode == 6)
+			max_value = 0x20;
+ 192:	90 e2       	ldi	r25, 0x20	; 32
+			
+		// increment
+		stored_value += increment;
+ 194:	80 91 00 01 	lds	r24, 0x0100
+ 198:	82 0f       	add	r24, r18
+		
+		//roll to 0 if max was exceeded.
+		if(stored_value > max_value)
+ 19a:	98 17       	cp	r25, r24
+ 19c:	18 f0       	brcs	.+6      	; 0x1a4 <key_task+0xfe>
+		//2 at tens of hours
+		if(mode == 6)
+			max_value = 0x20;
+			
+		// increment
+		stored_value += increment;
+ 19e:	80 93 00 01 	sts	0x0100, r24
+ 1a2:	08 95       	ret
+		
+		//roll to 0 if max was exceeded.
+		if(stored_value > max_value)
+			stored_value = 0;
+ 1a4:	10 92 00 01 	sts	0x0100, r1
+ 1a8:	08 95       	ret
+			time[index] &= keep_mask;
+			time[index] |= stored_value;
+		}
+		
+		//Increment mode if key 1 was pressed
+		mode++;
+ 1aa:	81 e0       	ldi	r24, 0x01	; 1
+ 1ac:	90 e0       	ldi	r25, 0x00	; 0
+ 1ae:	90 93 0c 01 	sts	0x010C, r25
+ 1b2:	80 93 0b 01 	sts	0x010B, r24
+ 1b6:	21 e0       	ldi	r18, 0x01	; 1
+ 1b8:	30 e0       	ldi	r19, 0x00	; 0
+ 1ba:	bb cf       	rjmp	.-138    	; 0x132 <key_task+0x8c>
+ 1bc:	08 95       	ret
+
+000001be <debounce>:
+
+uint8_t debounce (void)
+{
+	//read buttons 
+	static int pressed_counter = 0;
+	uint8_t key = BUTTON_PIN & (1<<BUTTON_1 | 1<<BUTTON_2);
+ 1be:	89 b1       	in	r24, 0x09	; 9
+	
+	//was button 1 pulled down?
+	if(!(key & (1<<BUTTON_1)))
+ 1c0:	83 ff       	sbrs	r24, 3
+ 1c2:	1a c0       	rjmp	.+52     	; 0x1f8 <debounce+0x3a>
+		key = 1 << BUTTON_1;
+	//was key 2 pulled down?
+	else if(!(key & (1 << BUTTON_2)))
+ 1c4:	84 ff       	sbrs	r24, 4
+ 1c6:	1a c0       	rjmp	.+52     	; 0x1fc <debounce+0x3e>
+ 1c8:	21 c0       	rjmp	.+66     	; 0x20c <debounce+0x4e>
+	//If key was pressed
+	else 
+	{
+		//Store counter value on first round
+		if(!pressed_counter)
+			pressed_counter = loopcounter;
+ 1ca:	20 91 11 01 	lds	r18, 0x0111
+ 1ce:	30 91 12 01 	lds	r19, 0x0112
+ 1d2:	30 93 14 01 	sts	0x0114, r19
+ 1d6:	20 93 13 01 	sts	0x0113, r18
+			
+		//Trigger key press on 5th round (approx 15 ms debounce)
+		if(loopcounter == (pressed_counter + 5))
+ 1da:	40 91 13 01 	lds	r20, 0x0113
+ 1de:	50 91 14 01 	lds	r21, 0x0114
+ 1e2:	4b 5f       	subi	r20, 0xFB	; 251
+ 1e4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 1e6:	20 91 11 01 	lds	r18, 0x0111
+ 1ea:	30 91 12 01 	lds	r19, 0x0112
+ 1ee:	42 17       	cp	r20, r18
+ 1f0:	53 07       	cpc	r21, r19
+ 1f2:	89 f0       	breq	.+34     	; 0x216 <debounce+0x58>
+		{
+			return key; //Retun keypress
+		}
+	}
+	
+	return 0;
+ 1f4:	80 e0       	ldi	r24, 0x00	; 0
+ 1f6:	08 95       	ret
+	static int pressed_counter = 0;
+	uint8_t key = BUTTON_PIN & (1<<BUTTON_1 | 1<<BUTTON_2);
+	
+	//was button 1 pulled down?
+	if(!(key & (1<<BUTTON_1)))
+		key = 1 << BUTTON_1;
+ 1f8:	88 e0       	ldi	r24, 0x08	; 8
+ 1fa:	01 c0       	rjmp	.+2      	; 0x1fe <debounce+0x40>
+	//was key 2 pulled down?
+	else if(!(key & (1 << BUTTON_2)))
+		key = 1 << BUTTON_2;
+ 1fc:	80 e1       	ldi	r24, 0x10	; 16
+	
+	//If key was pressed
+	else 
+	{
+		//Store counter value on first round
+		if(!pressed_counter)
+ 1fe:	20 91 13 01 	lds	r18, 0x0113
+ 202:	30 91 14 01 	lds	r19, 0x0114
+ 206:	23 2b       	or	r18, r19
+ 208:	01 f3       	breq	.-64     	; 0x1ca <debounce+0xc>
+ 20a:	e7 cf       	rjmp	.-50     	; 0x1da <debounce+0x1c>
+		key = 0;
+	
+	//If no key is pressed, reset counters and return 0
+	if(!key)
+	{
+	pressed_counter = 0;
+ 20c:	10 92 14 01 	sts	0x0114, r1
+ 210:	10 92 13 01 	sts	0x0113, r1
+	return 0;
+ 214:	80 e0       	ldi	r24, 0x00	; 0
+			return key; //Retun keypress
+		}
+	}
+	
+	return 0;
+}
+ 216:	08 95       	ret
+
+00000218 <display_time>:
+{
+	
+	//Show time
+	
+	//Turn off mosfets and leds
+	PORTB &= ~((1 << 0)|(1 << 1)|(1 << 2));
+ 218:	85 b1       	in	r24, 0x05	; 5
+ 21a:	88 7f       	andi	r24, 0xF8	; 248
+ 21c:	85 b9       	out	0x05, r24	; 5
+	PORTC &= ~((1 << 0)|(1 << 1)|(1 << 2)|(1 << 3));
+ 21e:	88 b1       	in	r24, 0x08	; 8
+ 220:	80 7f       	andi	r24, 0xF0	; 240
+ 222:	88 b9       	out	0x08, r24	; 8
+	PORTD &= ~((1 << 5)|(1 << 6)|(1 << 7));
+ 224:	8b b1       	in	r24, 0x0b	; 11
+ 226:	8f 71       	andi	r24, 0x1F	; 31
+ 228:	8b b9       	out	0x0b, r24	; 11
+	
+	//Calculate port positions
+
+	if(time[time_index] & 0x01)
+ 22a:	e0 91 01 01 	lds	r30, 0x0101
+ 22e:	f0 e0       	ldi	r31, 0x00	; 0
+ 230:	e3 5f       	subi	r30, 0xF3	; 243
+ 232:	fe 4f       	sbci	r31, 0xFE	; 254
+ 234:	80 81       	ld	r24, Z
+ 236:	80 fd       	sbrc	r24, 0
+	PORTB |= (1 << LED_01);
+ 238:	29 9a       	sbi	0x05, 1	; 5
+	
+	if(time[time_index] & 0x02)
+ 23a:	e0 91 01 01 	lds	r30, 0x0101
+ 23e:	f0 e0       	ldi	r31, 0x00	; 0
+ 240:	e3 5f       	subi	r30, 0xF3	; 243
+ 242:	fe 4f       	sbci	r31, 0xFE	; 254
+ 244:	80 81       	ld	r24, Z
+ 246:	81 fd       	sbrc	r24, 1
+	PORTC |= (1 << LED_02);
+ 248:	40 9a       	sbi	0x08, 0	; 8
+	
+	if(time[time_index] & 0x04)
+ 24a:	e0 91 01 01 	lds	r30, 0x0101
+ 24e:	f0 e0       	ldi	r31, 0x00	; 0
+ 250:	e3 5f       	subi	r30, 0xF3	; 243
+ 252:	fe 4f       	sbci	r31, 0xFE	; 254
+ 254:	80 81       	ld	r24, Z
+ 256:	82 fd       	sbrc	r24, 2
+	PORTC |= (1 << LED_04);
+ 258:	42 9a       	sbi	0x08, 2	; 8
+	
+	if(time[time_index] & 0x08)
+ 25a:	e0 91 01 01 	lds	r30, 0x0101
+ 25e:	f0 e0       	ldi	r31, 0x00	; 0
+ 260:	e3 5f       	subi	r30, 0xF3	; 243
+ 262:	fe 4f       	sbci	r31, 0xFE	; 254
+ 264:	80 81       	ld	r24, Z
+ 266:	83 fd       	sbrc	r24, 3
+	PORTC |= (1 << LED_08);
+ 268:	43 9a       	sbi	0x08, 3	; 8
+	
+	if(time[time_index] & 0x10)
+ 26a:	e0 91 01 01 	lds	r30, 0x0101
+ 26e:	f0 e0       	ldi	r31, 0x00	; 0
+ 270:	e3 5f       	subi	r30, 0xF3	; 243
+ 272:	fe 4f       	sbci	r31, 0xFE	; 254
+ 274:	80 81       	ld	r24, Z
+ 276:	84 fd       	sbrc	r24, 4
+	PORTB |= (1 << LED_10);
+ 278:	28 9a       	sbi	0x05, 0	; 5
+	
+	if(time[time_index] & 0x20)
+ 27a:	e0 91 01 01 	lds	r30, 0x0101
+ 27e:	f0 e0       	ldi	r31, 0x00	; 0
+ 280:	e3 5f       	subi	r30, 0xF3	; 243
+ 282:	fe 4f       	sbci	r31, 0xFE	; 254
+ 284:	80 81       	ld	r24, Z
+ 286:	85 fd       	sbrc	r24, 5
+	PORTB |= (1 << LED_20);
+ 288:	2a 9a       	sbi	0x05, 2	; 5
+	
+	if(time[time_index] & 0x40)
+ 28a:	e0 91 01 01 	lds	r30, 0x0101
+ 28e:	f0 e0       	ldi	r31, 0x00	; 0
+ 290:	e3 5f       	subi	r30, 0xF3	; 243
+ 292:	fe 4f       	sbci	r31, 0xFE	; 254
+ 294:	80 81       	ld	r24, Z
+ 296:	86 ff       	sbrs	r24, 6
+ 298:	3d c0       	rjmp	.+122    	; 0x314 <display_time+0xfc>
+	PORTC |= (1 << LED_40);
+ 29a:	41 9a       	sbi	0x08, 1	; 8
+ 29c:	3b c0       	rjmp	.+118    	; 0x314 <display_time+0xfc>
+	//Turn appropriate mosfet on
+	//target 100Hz - delay 3ms
+	
+	for(int ii = 0; ii < 6; ii++)
+	{
+		PORTD |= (1 << FETORDER[time_index]);
+ 29e:	6b b1       	in	r22, 0x0b	; 11
+ 2a0:	e0 91 01 01 	lds	r30, 0x0101
+ 2a4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a6:	ee 0f       	add	r30, r30
+ 2a8:	ff 1f       	adc	r31, r31
+ 2aa:	ee 5f       	subi	r30, 0xFE	; 254
+ 2ac:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2ae:	a9 01       	movw	r20, r18
+ 2b0:	00 80       	ld	r0, Z
+ 2b2:	02 c0       	rjmp	.+4      	; 0x2b8 <display_time+0xa0>
+ 2b4:	44 0f       	add	r20, r20
+ 2b6:	55 1f       	adc	r21, r21
+ 2b8:	0a 94       	dec	r0
+ 2ba:	e2 f7       	brpl	.-8      	; 0x2b4 <display_time+0x9c>
+ 2bc:	46 2b       	or	r20, r22
+ 2be:	4b b9       	out	0x0b, r20	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2c0:	41 e2       	ldi	r20, 0x21	; 33
+ 2c2:	4a 95       	dec	r20
+ 2c4:	f1 f7       	brne	.-4      	; 0x2c2 <display_time+0xaa>
+ 2c6:	00 00       	nop
+		_delay_us(BRIGHTNESS);
+
+		PORTD &= ~(1 << FETORDER[time_index]);
+ 2c8:	6b b1       	in	r22, 0x0b	; 11
+ 2ca:	e0 91 01 01 	lds	r30, 0x0101
+ 2ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d0:	ee 0f       	add	r30, r30
+ 2d2:	ff 1f       	adc	r31, r31
+ 2d4:	ee 5f       	subi	r30, 0xFE	; 254
+ 2d6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2d8:	a9 01       	movw	r20, r18
+ 2da:	00 80       	ld	r0, Z
+ 2dc:	02 c0       	rjmp	.+4      	; 0x2e2 <display_time+0xca>
+ 2de:	44 0f       	add	r20, r20
+ 2e0:	55 1f       	adc	r21, r21
+ 2e2:	0a 94       	dec	r0
+ 2e4:	e2 f7       	brpl	.-8      	; 0x2de <display_time+0xc6>
+ 2e6:	40 95       	com	r20
+ 2e8:	46 23       	and	r20, r22
+ 2ea:	4b b9       	out	0x0b, r20	; 11
+ 2ec:	ea ea       	ldi	r30, 0xAA	; 170
+ 2ee:	f9 e0       	ldi	r31, 0x09	; 9
+ 2f0:	31 97       	sbiw	r30, 0x01	; 1
+ 2f2:	f1 f7       	brne	.-4      	; 0x2f0 <display_time+0xd8>
+ 2f4:	00 c0       	rjmp	.+0      	; 0x2f6 <display_time+0xde>
+ 2f6:	00 00       	nop
+ 2f8:	01 97       	sbiw	r24, 0x01	; 1
+	PORTC |= (1 << LED_40);
+	
+	//Turn appropriate mosfet on
+	//target 100Hz - delay 3ms
+	
+	for(int ii = 0; ii < 6; ii++)
+ 2fa:	89 f6       	brne	.-94     	; 0x29e <display_time+0x86>
+		_delay_us(500-BRIGHTNESS);
+	}
+
+	
+	//scale index between 1-3
+	time_index++;
+ 2fc:	80 91 01 01 	lds	r24, 0x0101
+ 300:	8f 5f       	subi	r24, 0xFF	; 255
+	time_index %= 4;
+ 302:	83 70       	andi	r24, 0x03	; 3
+	if(!time_index)
+ 304:	19 f0       	breq	.+6      	; 0x30c <display_time+0xf4>
+	}
+
+	
+	//scale index between 1-3
+	time_index++;
+	time_index %= 4;
+ 306:	80 93 01 01 	sts	0x0101, r24
+ 30a:	08 95       	ret
+	if(!time_index)
+	time_index++;
+ 30c:	81 e0       	ldi	r24, 0x01	; 1
+ 30e:	80 93 01 01 	sts	0x0101, r24
+ 312:	08 95       	ret
+	
+	return 0;
+}
+
+void display_time(void)
+{
+ 314:	86 e0       	ldi	r24, 0x06	; 6
+ 316:	90 e0       	ldi	r25, 0x00	; 0
+	//Turn appropriate mosfet on
+	//target 100Hz - delay 3ms
+	
+	for(int ii = 0; ii < 6; ii++)
+	{
+		PORTD |= (1 << FETORDER[time_index]);
+ 318:	21 e0       	ldi	r18, 0x01	; 1
+ 31a:	30 e0       	ldi	r19, 0x00	; 0
+ 31c:	c0 cf       	rjmp	.-128    	; 0x29e <display_time+0x86>
+
+0000031e <main>:
+void key_task(uint8_t key);
+void display_time(void);
+uint8_t debounce(void);
+
+int main(void)
+{
+ 31e:	cf 93       	push	r28
+ 320:	df 93       	push	r29
+ 322:	00 d0       	rcall	.+0      	; 0x324 <main+0x6>
+ 324:	cd b7       	in	r28, 0x3d	; 61
+ 326:	de b7       	in	r29, 0x3e	; 62
+	//Take output pins low
+	PORTB = 0x00;
+ 328:	15 b8       	out	0x05, r1	; 5
+	PORTC = 0x00;
+ 32a:	18 b8       	out	0x08, r1	; 8
+	PORTD = 0x00;
+ 32c:	1b b8       	out	0x0b, r1	; 11
+	
+	//Set output pins to output
+	DDRB |= (1 << 0)|(1 << 1)|(1 << 2);
+ 32e:	84 b1       	in	r24, 0x04	; 4
+ 330:	87 60       	ori	r24, 0x07	; 7
+ 332:	84 b9       	out	0x04, r24	; 4
+	DDRC |= (1 << 0)|(1 << 1)|(1 << 2)|(1 << 3);
+ 334:	87 b1       	in	r24, 0x07	; 7
+ 336:	8f 60       	ori	r24, 0x0F	; 15
+ 338:	87 b9       	out	0x07, r24	; 7
+	DDRD |= (1 << 5)|(1 << 6)|(1 << 7);
+ 33a:	8a b1       	in	r24, 0x0a	; 10
+ 33c:	80 6e       	ori	r24, 0xE0	; 224
+ 33e:	8a b9       	out	0x0a, r24	; 10
+	
+	//Start communicating over I2C
+	TWIInit();
+ 340:	0e 94 f8 01 	call	0x3f0	; 0x3f0 <TWIInit>
+	
+	//Register pointer, second, min, hr, date, day, month, yr, ctrl
+	//uint8_t data[] = {0x00, 0x00, 0x10, 0x16, 0x00, 0x30, 0x06, 0x13, 0x10};
+	
+	//RP + ctrl	
+	uint8_t data[] = {0x07, 0x10};	
+ 344:	87 e0       	ldi	r24, 0x07	; 7
+ 346:	89 83       	std	Y+1, r24	; 0x01
+ 348:	80 e1       	ldi	r24, 0x10	; 16
+ 34a:	8a 83       	std	Y+2, r24	; 0x02
+		
+	//Write to DS1307
+	TWIWrite(0x68, data, 0x02);
+ 34c:	42 e0       	ldi	r20, 0x02	; 2
+ 34e:	be 01       	movw	r22, r28
+ 350:	6f 5f       	subi	r22, 0xFF	; 255
+ 352:	7f 4f       	sbci	r23, 0xFF	; 255
+ 354:	88 e6       	ldi	r24, 0x68	; 104
+ 356:	0e 94 56 02 	call	0x4ac	; 0x4ac <TWIWrite>
+	
+	EIMSK |= 0x01;  //Enable INT0
+ 35a:	e8 9a       	sbi	0x1d, 0	; 29
+	EICRA |= 0x03; //Trigger on high edge of INT0 - DS1307 updates on low.
+ 35c:	e9 e6       	ldi	r30, 0x69	; 105
+ 35e:	f0 e0       	ldi	r31, 0x00	; 0
+ 360:	80 81       	ld	r24, Z
+ 362:	83 60       	ori	r24, 0x03	; 3
+ 364:	80 83       	st	Z, r24
+	//TODO: Enable INT1
+	//TODO: Trigger on LOWER EDGE of INT1
+	sei(); //Allow interrupts
+ 366:	78 94       	sei
+			
+			//read SP + SSMMHH from DS1307
+			TWIRead(0x68, time, 4);
+			
+			//Format time - DS1307 returns HH 0x2x as 0b 0011 xxxx. Change to 0b 0010 xxxx
+			if(0x20 & time[4])
+ 368:	01 e1       	ldi	r16, 0x11	; 17
+ 36a:	11 e0       	ldi	r17, 0x01	; 1
+	sei(); //Allow interrupts
+	
+	while(1)
+	{
+		//Second changed, turn off drains, read time. if user is not setting time
+		if(tick && (!mode))
+ 36c:	80 91 0a 01 	lds	r24, 0x010A
+ 370:	88 23       	and	r24, r24
+ 372:	f9 f0       	breq	.+62     	; 0x3b2 <main+0x94>
+ 374:	80 91 0b 01 	lds	r24, 0x010B
+ 378:	90 91 0c 01 	lds	r25, 0x010C
+ 37c:	89 2b       	or	r24, r25
+ 37e:	c9 f4       	brne	.+50     	; 0x3b2 <main+0x94>
+		{
+			//Clear interrupts- do not allow user to **** up data read
+			cli();
+ 380:	f8 94       	cli
+			
+			//take mosfets off
+			PORTD &= ~( (1<<HH)|(1<<MM)|(1<<SS));
+ 382:	8b b1       	in	r24, 0x0b	; 11
+ 384:	8f 71       	andi	r24, 0x1F	; 31
+ 386:	8b b9       	out	0x0b, r24	; 11
+			
+			//Set stack pointer of DS1307 to 0x00 (seconds)
+			TWIWrite(0x68, 0x00, 0x01);
+ 388:	41 e0       	ldi	r20, 0x01	; 1
+ 38a:	60 e0       	ldi	r22, 0x00	; 0
+ 38c:	70 e0       	ldi	r23, 0x00	; 0
+ 38e:	88 e6       	ldi	r24, 0x68	; 104
+ 390:	0e 94 56 02 	call	0x4ac	; 0x4ac <TWIWrite>
+			
+			//read SP + SSMMHH from DS1307
+			TWIRead(0x68, time, 4);
+ 394:	44 e0       	ldi	r20, 0x04	; 4
+ 396:	6d e0       	ldi	r22, 0x0D	; 13
+ 398:	71 e0       	ldi	r23, 0x01	; 1
+ 39a:	88 e6       	ldi	r24, 0x68	; 104
+ 39c:	0e 94 33 02 	call	0x466	; 0x466 <TWIRead>
+			
+			//Format time - DS1307 returns HH 0x2x as 0b 0011 xxxx. Change to 0b 0010 xxxx
+			if(0x20 & time[4])
+ 3a0:	f8 01       	movw	r30, r16
+ 3a2:	80 81       	ld	r24, Z
+ 3a4:	85 ff       	sbrs	r24, 5
+ 3a6:	02 c0       	rjmp	.+4      	; 0x3ac <main+0x8e>
+				time[4] &= ~(0x10);
+ 3a8:	8f 7e       	andi	r24, 0xEF	; 239
+ 3aa:	80 83       	st	Z, r24
+				
+			tick = 0;
+ 3ac:	10 92 0a 01 	sts	0x010A, r1
+			
+			//Read done, enable interrupts
+			sei();
+ 3b0:	78 94       	sei
+		}
+		
+		
+		
+		
+		display_time();
+ 3b2:	0e 94 0c 01 	call	0x218	; 0x218 <display_time>
+		loopcounter++;
+ 3b6:	80 91 11 01 	lds	r24, 0x0111
+ 3ba:	90 91 12 01 	lds	r25, 0x0112
+ 3be:	01 96       	adiw	r24, 0x01	; 1
+ 3c0:	90 93 12 01 	sts	0x0112, r25
+ 3c4:	80 93 11 01 	sts	0x0111, r24
+		uint8_t key = debounce();
+ 3c8:	0e 94 df 00 	call	0x1be	; 0x1be <debounce>
+		
+		//Handle keypress
+		key_task(key);
+ 3cc:	0e 94 53 00 	call	0xa6	; 0xa6 <key_task>
+
+	}
+ 3d0:	cd cf       	rjmp	.-102    	; 0x36c <main+0x4e>
+
+000003d2 <__vector_1>:
+	time_index++;
+}
+
+//Interrupt handler
+ISR(INT0_vect)
+{
+ 3d2:	1f 92       	push	r1
+ 3d4:	0f 92       	push	r0
+ 3d6:	0f b6       	in	r0, 0x3f	; 63
+ 3d8:	0f 92       	push	r0
+ 3da:	11 24       	eor	r1, r1
+ 3dc:	8f 93       	push	r24
+	tick = 1;//Set flag to read I2C
+ 3de:	81 e0       	ldi	r24, 0x01	; 1
+ 3e0:	80 93 0a 01 	sts	0x010A, r24
+ 3e4:	8f 91       	pop	r24
+ 3e6:	0f 90       	pop	r0
+ 3e8:	0f be       	out	0x3f, r0	; 63
+ 3ea:	0f 90       	pop	r0
+ 3ec:	1f 90       	pop	r1
+ 3ee:	18 95       	reti
+
+000003f0 <TWIInit>:
+	 * xxxx xx01 = 4
+	 * xxxx xx10 = 16
+	 * xxxx xx11 = 64
+	 */
+	//set SCL to 50kHz @ F_CPU of 16MHZ, TODO: Freq select
+	TWSR = 0x02; //TWSR xxxx xx10, prescaler of 16
+ 3f0:	82 e0       	ldi	r24, 0x02	; 2
+ 3f2:	80 93 b9 00 	sts	0x00B9, r24
+	TWBR = 0x0A; //bit rate of 0d10
+ 3f6:	8a e0       	ldi	r24, 0x0A	; 10
+ 3f8:	80 93 b8 00 	sts	0x00B8, r24
+	TWCR = (1<<TWEN);//enable TWI
+ 3fc:	84 e0       	ldi	r24, 0x04	; 4
+ 3fe:	80 93 bc 00 	sts	0x00BC, r24
+ 402:	08 95       	ret
+
+00000404 <TWIStart>:
+*/
+/* 2013-06-30 ok */
+void TWIStart(void)
+{
+	
+	TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN); //Clear interrupt, Write start , write enable
+ 404:	84 ea       	ldi	r24, 0xA4	; 164
+ 406:	80 93 bc 00 	sts	0x00BC, r24
+	/*
+	When the START condition has been transmitted, the TWINT Flag in TWCR is set, and
+	TWSR is updated with a status code indicating that the START condition has successfully been sent.
+	*/
+	while ((TWCR & (1<<TWINT)) == 0);
+ 40a:	ec eb       	ldi	r30, 0xBC	; 188
+ 40c:	f0 e0       	ldi	r31, 0x00	; 0
+ 40e:	80 81       	ld	r24, Z
+ 410:	88 23       	and	r24, r24
+ 412:	ec f7       	brge	.-6      	; 0x40e <TWIStart+0xa>
+	*/
+	//if ((TWSR & 0xF8) != TWI_START_SENT)
+	//	ERROR(LED_RED);
+		
+		
+}
+ 414:	08 95       	ret
+
+00000416 <TWIAddress>:
+transmission of the address packet.
+*/
+/*2013-06-30 ok*/
+void TWIAddress(uint8_t address, uint8_t read)
+{
+	address <<=1;
+ 416:	88 0f       	add	r24, r24
+	if(read)
+ 418:	61 11       	cpse	r22, r1
+		++address;
+ 41a:	8f 5f       	subi	r24, 0xFF	; 255
+
+
+	TWDR = (address);
+ 41c:	80 93 bb 00 	sts	0x00BB, r24
+	TWCR = (1<<TWINT)|(1<<TWEN);
+ 420:	84 e8       	ldi	r24, 0x84	; 132
+ 422:	80 93 bc 00 	sts	0x00BC, r24
+	while ((TWCR & (1<<TWINT)) == 0);
+ 426:	ec eb       	ldi	r30, 0xBC	; 188
+ 428:	f0 e0       	ldi	r31, 0x00	; 0
+ 42a:	80 81       	ld	r24, Z
+ 42c:	88 23       	and	r24, r24
+ 42e:	ec f7       	brge	.-6      	; 0x42a <TWIAddress+0x14>
+	*/
+	//if ((TWSR & 0xF8) != TWI_MT_SLA_ACK)
+	//	ERROR(LED_RED);
+	
+	
+}
+ 430:	08 95       	ret
+
+00000432 <TWIReadACK>:
+	
+}
+
+uint8_t TWIReadACK(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);
+ 432:	84 ec       	ldi	r24, 0xC4	; 196
+ 434:	80 93 bc 00 	sts	0x00BC, r24
+	while ((TWCR & (1<<TWINT)) == 0);
+ 438:	ec eb       	ldi	r30, 0xBC	; 188
+ 43a:	f0 e0       	ldi	r31, 0x00	; 0
+ 43c:	80 81       	ld	r24, Z
+ 43e:	88 23       	and	r24, r24
+ 440:	ec f7       	brge	.-6      	; 0x43c <TWIReadACK+0xa>
+	return TWDR;
+ 442:	80 91 bb 00 	lds	r24, 0x00BB
+}
+ 446:	08 95       	ret
+
+00000448 <TWIReadNACK>:
+//read byte with NACK
+uint8_t TWIReadNACK(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWEN);
+ 448:	84 e8       	ldi	r24, 0x84	; 132
+ 44a:	80 93 bc 00 	sts	0x00BC, r24
+	while ((TWCR & (1<<TWINT)) == 0);
+ 44e:	ec eb       	ldi	r30, 0xBC	; 188
+ 450:	f0 e0       	ldi	r31, 0x00	; 0
+ 452:	80 81       	ld	r24, Z
+ 454:	88 23       	and	r24, r24
+ 456:	ec f7       	brge	.-6      	; 0x452 <TWIReadNACK+0xa>
+	return TWDR;
+ 458:	80 91 bb 00 	lds	r24, 0x00BB
+}
+ 45c:	08 95       	ret
+
+0000045e <TWIStop>:
+Note that TWINT is NOT set after a STOP condition has been sent.
+*/
+/*2013-06-30 ok */
+void TWIStop(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
+ 45e:	84 e9       	ldi	r24, 0x94	; 148
+ 460:	80 93 bc 00 	sts	0x00BC, r24
+ 464:	08 95       	ret
+
+00000466 <TWIRead>:
+	while ((TWCR & (1<<TWINT)) == 0);
+	return TWDR;
+}
+
+void TWIRead(uint8_t address, uint8_t *data, uint8_t length)
+{
+ 466:	0f 93       	push	r16
+ 468:	1f 93       	push	r17
+ 46a:	cf 93       	push	r28
+ 46c:	df 93       	push	r29
+ 46e:	18 2f       	mov	r17, r24
+ 470:	eb 01       	movw	r28, r22
+ 472:	04 2f       	mov	r16, r20
+	//Start comms
+	TWIStart();
+ 474:	0e 94 02 02 	call	0x404	; 0x404 <TWIStart>
+	//Address slave for reading
+	TWIAddress(address, 0x01);
+ 478:	61 e0       	ldi	r22, 0x01	; 1
+ 47a:	81 2f       	mov	r24, r17
+ 47c:	0e 94 0b 02 	call	0x416	; 0x416 <TWIAddress>
+	
+	//Do not read last byte with ack
+	for(unsigned int ii = 0; ii < length; ++ii)
+ 480:	10 e0       	ldi	r17, 0x00	; 0
+ 482:	01 15       	cp	r16, r1
+ 484:	11 05       	cpc	r17, r1
+ 486:	41 f0       	breq	.+16     	; 0x498 <TWIRead+0x32>
+	TWCR = (1<<TWINT)|(1<<TWEN);
+	while ((TWCR & (1<<TWINT)) == 0);
+	return TWDR;
+}
+
+void TWIRead(uint8_t address, uint8_t *data, uint8_t length)
+ 488:	0c 0f       	add	r16, r28
+ 48a:	1d 1f       	adc	r17, r29
+	TWIAddress(address, 0x01);
+	
+	//Do not read last byte with ack
+	for(unsigned int ii = 0; ii < length; ++ii)
+	{
+		*data++ = TWIReadACK();
+ 48c:	0e 94 19 02 	call	0x432	; 0x432 <TWIReadACK>
+ 490:	89 93       	st	Y+, r24
+	TWIStart();
+	//Address slave for reading
+	TWIAddress(address, 0x01);
+	
+	//Do not read last byte with ack
+	for(unsigned int ii = 0; ii < length; ++ii)
+ 492:	c0 17       	cp	r28, r16
+ 494:	d1 07       	cpc	r29, r17
+ 496:	d1 f7       	brne	.-12     	; 0x48c <TWIRead+0x26>
+	{
+		*data++ = TWIReadACK();
+	}
+	//Read last bit with nack
+	*data = TWIReadNACK(); 
+ 498:	0e 94 24 02 	call	0x448	; 0x448 <TWIReadNACK>
+ 49c:	88 83       	st	Y, r24
+	//Generate stop
+	TWIStop();
+ 49e:	0e 94 2f 02 	call	0x45e	; 0x45e <TWIStop>
+}
+ 4a2:	df 91       	pop	r29
+ 4a4:	cf 91       	pop	r28
+ 4a6:	1f 91       	pop	r17
+ 4a8:	0f 91       	pop	r16
+ 4aa:	08 95       	ret
+
+000004ac <TWIWrite>:
+	
+}
+
+
+void TWIWrite(uint8_t address, uint8_t *data, uint8_t length)
+{
+ 4ac:	0f 93       	push	r16
+ 4ae:	1f 93       	push	r17
+ 4b0:	cf 93       	push	r28
+ 4b2:	df 93       	push	r29
+ 4b4:	08 2f       	mov	r16, r24
+ 4b6:	eb 01       	movw	r28, r22
+ 4b8:	14 2f       	mov	r17, r20
+
+	TWIStart();
+ 4ba:	0e 94 02 02 	call	0x404	; 0x404 <TWIStart>
+
+	TWIAddress(address, 0x00);
+ 4be:	60 e0       	ldi	r22, 0x00	; 0
+ 4c0:	80 2f       	mov	r24, r16
+ 4c2:	0e 94 0b 02 	call	0x416	; 0x416 <TWIAddress>
+
+	//For each byte
+	for(unsigned int ii = 0; ii < length; ii++)
+ 4c6:	81 2f       	mov	r24, r17
+ 4c8:	90 e0       	ldi	r25, 0x00	; 0
+ 4ca:	00 97       	sbiw	r24, 0x00	; 0
+ 4cc:	81 f0       	breq	.+32     	; 0x4ee <TWIWrite+0x42>
+	
+	
+}
+
+
+void TWIWrite(uint8_t address, uint8_t *data, uint8_t length)
+ 4ce:	8c 0f       	add	r24, r28
+ 4d0:	9d 1f       	adc	r25, r29
+		/*
+		Load DATA into TWDR Register.
+		Clear TWINT bit in TWCR to
+		start transmission of data
+		*/
+		TWDR = *data++;
+ 4d2:	ab eb       	ldi	r26, 0xBB	; 187
+ 4d4:	b0 e0       	ldi	r27, 0x00	; 0
+		TWCR = (1<<TWINT) |	(1<<TWEN);
+ 4d6:	ec eb       	ldi	r30, 0xBC	; 188
+ 4d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 4da:	34 e8       	ldi	r19, 0x84	; 132
+		/*
+		Load DATA into TWDR Register.
+		Clear TWINT bit in TWCR to
+		start transmission of data
+		*/
+		TWDR = *data++;
+ 4dc:	29 91       	ld	r18, Y+
+ 4de:	2c 93       	st	X, r18
+		TWCR = (1<<TWINT) |	(1<<TWEN);
+ 4e0:	30 83       	st	Z, r19
+		Wait for TWINT Flag set. This
+		indicates that the DATA has been
+		transmitted, and ACK/NACK has
+		been received.
+		*/
+		while (!(TWCR & (1<<TWINT)));
+ 4e2:	20 81       	ld	r18, Z
+ 4e4:	22 23       	and	r18, r18
+ 4e6:	ec f7       	brge	.-6      	; 0x4e2 <TWIWrite+0x36>
+	TWIStart();
+
+	TWIAddress(address, 0x00);
+
+	//For each byte
+	for(unsigned int ii = 0; ii < length; ii++)
+ 4e8:	c8 17       	cp	r28, r24
+ 4ea:	d9 07       	cpc	r29, r25
+ 4ec:	b9 f7       	brne	.-18     	; 0x4dc <TWIWrite+0x30>
+		*/
+		//if ((TWSR & 0xF8) != TWI_MT_DATA_ACK)
+		//	ERROR(LED_GREEN | LED_RED);
+	}
+	
+	TWIStop();
+ 4ee:	0e 94 2f 02 	call	0x45e	; 0x45e <TWIStop>
+	
+}
+ 4f2:	df 91       	pop	r29
+ 4f4:	cf 91       	pop	r28
+ 4f6:	1f 91       	pop	r17
+ 4f8:	0f 91       	pop	r16
+ 4fa:	08 95       	ret
+
+000004fc <_exit>:
+ 4fc:	f8 94       	cli
+
+000004fe <__stop_program>:
+ 4fe:	ff cf       	rjmp	.-2      	; 0x4fe <__stop_program>
